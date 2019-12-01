@@ -35,26 +35,31 @@ def save_user_profile(sender, instance, **kwargs):
 	else:
 		AdminProfile.objects.get_or_create(user = instance)
 
-class Business(models.Model):
-    owner = models.ForeignKey(User, related_name="owners")
-    name =models.CharField(max_length=144)
-    email = models.EmailField(max_length=144)
-
-class Police(models.Model):
-    name = models.CharField(max_length=144)
-    contacts = models.EmailField(max_length=144)
-
-class Health(models.Model):
-    name = models.CharField(max_length=144)
-    contacts = models.EmailField(max_length=144)
-
-
 class Neighbourhood(models.Model):
     name = models.CharField(max_length=144)
     location = models.CharField(max_length=144)
     occupants_count = models.PositiveIntegerField(default=0)
-    business = models.ForeignKey(Business, on_delete=models.CASCADE)
-    police_contacts =models.ForeignKey(Police, on_delete=models.CASCADE)
-    health_contacts =models.ForeignKey(Health, on_delete=models.CASCADE)
+    # business = models.ForeignKey(Business, on_delete=models.CASCADE)
+    # police_contacts =models.ForeignKey(Police, on_delete=models.CASCADE)
+    # health_contacts =models.ForeignKey(Health, on_delete=models.CASCADE)
 
    # neighbourhood = models.ForeignKey(Neighbourhood, related_name="neighbourhoods")
+
+
+class Business(models.Model):
+    owner = models.ForeignKey(User, related_name="owners")
+    name =models.CharField(max_length=144)
+    email = models.EmailField(max_length=144)
+    neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, default=1)
+
+
+class Police(models.Model):
+    name = models.CharField(max_length=144)
+    contacts = models.EmailField(max_length=144)
+    neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, default=1)
+
+class Health(models.Model):
+    name = models.CharField(max_length=144)
+    contacts = models.EmailField(max_length=144)
+    Neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, default=1)
+
