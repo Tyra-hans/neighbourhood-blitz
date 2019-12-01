@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'hoodapp',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -83,6 +85,8 @@ DATABASES = {
 }
 
 
+
+AUTH_USER_MODEL = "hoodapp.User" 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 

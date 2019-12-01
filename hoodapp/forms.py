@@ -1,24 +1,16 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
-from django.db import transaction
-
-from hoodapp.models import Regular, User , Neighbourhood
-
-class RegularSignUpForm(UserCreationForm):
-
-    neighbourhood = forms.ModelMultipleChoiceField(
-        queryset=Neighbourhood.objects.all(),
-        widget=forms.CheckboxSelectMultiple,
-        required=True
-    )
-    class Meta(UserCreationForm.Meta):
+from .models import RegularProfile, User, AdminProfile 
+class UserForm(forms.ModelForm):
+    class Meta:
         model = User
+        fields = ('first_name', 'last_name', 'email')
 
-    @transaction.atomic
-    def save(self):
-        user = super().save(commit=False)
-        user.is_regular = True
-        user.save()
-        regular = Regular.objects.create(user=user)
-        regular.neighbourhoodss.add(*self.cleaned_data.get('neighbourhoods'))
-        return user
+class InternProfileForm(forms.ModelForm):
+    class Meta:
+        model = RegularProfile
+        fields = ('location', 'bio')
+        
+class HRProfileForm(forms.ModelForm):
+    class Meta:
+        model = AdminProfile
+        fields = ('location', 'bio')
