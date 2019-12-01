@@ -7,3 +7,4 @@ class User(AbstractUser):
 
 class Regular(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    neighbourhood = models.ManyToManyField (Neighbourhood, related_name='hood_regular')
