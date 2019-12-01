@@ -18,4 +18,9 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'' , include('hoodapp.urls')),
+    url(r'accounts/', include('django.contrib.auth.urls')),
+    url(r'accounts/signup/', hoodapp.SignUpView.as_view(), name='signup'),
+    url(r'accounts/signup/regular/', regulars.RegularSignUpView.as_view(), name='regular_signup'),
+    url(r'accounts/signup/admin/', admins.AdminSignUpView.as_view(), name='admin_signup'),
 ]
