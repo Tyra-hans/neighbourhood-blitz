@@ -42,7 +42,7 @@ class Neighbourhood(models.Model):
 
 class Business(models.Model):
     owner = models.ForeignKey(User, related_name="owners")
-    name =models.CharField(max_length=144)
+    name = models.CharField(max_length=144)
     email = models.EmailField(max_length=144)
     neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, default=1)
 
@@ -53,9 +53,8 @@ class Business(models.Model):
         self.delete()
         
     @classmethod
-    def find_business(cls,id):
-        search = cls.objects.get(id = id)
-        return  search
+    def find_business(cls,name):
+        return cls.objects.filter(title__icontains=name).all()
     
     @classmethod   
     def update_business(cls,id,new_name):

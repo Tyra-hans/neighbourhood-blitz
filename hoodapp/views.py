@@ -44,14 +44,17 @@ def business(request, id):
    
     return render(request, 'all-posts/s_business.html', {'business': business})
 
+
+    
 def search(request):
     if 'site' in request.GET and request.GET['site']:
         search_term = request.GET.get('site')
-        businesses = Business.objects.filter(title__icontains = search_term)
+        businesses = Business.objects.filter(name__icontains = search_term)
         message = f'{search_term}'
         return render(request, 'all-posts/search.html', {'businesses': businesses, 'message': message})
         
     return render(request, 'all-posts/search.html')
+
 
 @login_required(login_url='/accounts/login/')
 def create_post(request):
