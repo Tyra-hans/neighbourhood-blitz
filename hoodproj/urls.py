@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'' , include('hoodapp.urls')),
     # url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^logout/$', views.logout, {"next_page": '/'}),
     
 ]
