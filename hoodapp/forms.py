@@ -1,16 +1,18 @@
 from django import forms
-from .models import RegularProfile, User, AdminProfile 
-class UserForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ('first_name', 'email')
+from .models import Post, Neighbourhood, Profile, Business
 
-class RegularProfileForm(forms.ModelForm):
+class UploadPostForm(forms.ModelForm):
     class Meta:
-        model = RegularProfile
-        fields = ('location', 'bio')
+        model = Project
+        exclude = ['publish_date']
+
+class UpdateProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        exclude = ['user']
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        exclude = ['user']
         
-class AdminProfileForm(forms.ModelForm):
-    class Meta:
-        model = AdminProfile
-        fields = ('location', 'bio')
