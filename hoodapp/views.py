@@ -3,7 +3,7 @@ from django.contrib.auth import login
 from .models import Post, Profile, Business, Neighbourhood
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .forms import UploadPostForm , UpdateProfileForm 
+from .forms import UploadPostForm , UpdateProfileForm , UploadBusinessForm
 
 
 def landing(request):
@@ -67,5 +67,19 @@ def create_post(request):
         return redirect('home')
     else:
         form = UploadPostForm()
+
+    return render(request, 'all-posts/create_post.html', {'form': form})
+
+@login_required(login_url='/accounts/login/')
+def create_business(request):
+    if request.method == 'POST':
+        form = UploadBusinessForm(request.POST, request.FILES)
+        if form.is_valid():
+            business = form.save(commit=False)
+            business.user = request.user
+            business.save()
+        return redirect('home')
+    else:
+        form = UploadBusinessForm()
 
     return render(request, 'all-posts/create_post.html', {'form': form})

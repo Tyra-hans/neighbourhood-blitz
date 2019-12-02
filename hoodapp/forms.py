@@ -19,4 +19,4 @@ class ProfileForm(forms.ModelForm):
 class UploadBusinessForm(forms.ModelForm):
     class Meta:
         model = Business
-        exclude = ['publish_date']
+        exclude = ['email']
