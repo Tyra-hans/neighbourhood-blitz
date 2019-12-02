@@ -12,7 +12,7 @@ def landing(request):
 @login_required(login_url='/accounts/login/')
 def home(request):
     context = {
-        'posts': Post.objects.all(),
+        'neighbourhoods': Neighbourhood.objects.all(),
         
     }
     return render(request, 'all-posts/home.html', context)
