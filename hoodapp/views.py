@@ -42,7 +42,7 @@ def business(request, id):
         user = User.objects.get(username = request.user)
         business = Business.objects.get(id = id)
    
-    return render(request, 'all-posts/s_business.html', {'business': business})
+    return render(request, 'all-posts/business.html', {'business': business})
 
 
     
@@ -82,4 +82,4 @@ def create_business(request):
     else:
         form = UploadBusinessForm()
 
-    return render(request, 'all-posts/create_post.html', {'form': form})
+    return render(request, 'all-posts/create_business.html', {'form': form})
