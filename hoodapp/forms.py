@@ -3,7 +3,7 @@ from .models import Post, Neighbourhood, Profile, Business
 
 class UploadPostForm(forms.ModelForm):
     class Meta:
-        model = Project
+        model = Post
         exclude = ['publish_date']
 
 class UpdateProfileForm(forms.ModelForm):
@@ -16,3 +16,7 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         exclude = ['user']
         
+class UploadBusinessForm(forms.ModelForm):
+    class Meta:
+        model = Business
+        exclude = ['publish_date']

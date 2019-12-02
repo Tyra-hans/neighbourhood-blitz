@@ -3,6 +3,7 @@ from django.contrib.auth import login
 from .models import Post, Profile, Business, Neighbourhood
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from .forms import UploadPostForm , UpdateProfileForm 
 
 
 def landing(request):

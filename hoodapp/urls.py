@@ -12,6 +12,7 @@ urlpatterns=[
    url(r'^sites/(\d+)$', views.post, name='post'),
    url(r'^sites/(\d+)$', views.business, name='business'),
    url(r'^search/$', views.search, name='search_results'),
+   url(r'^upload/$', views.create_post, name='create_post'),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
