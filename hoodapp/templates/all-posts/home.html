@@ -5,18 +5,18 @@
 {% block content %}
     <div class="container">
         <div class="row">
-                    {% for project in projects %}
+                    {% for post in posts %}
                 <div class="col-md-3 col-lg-3 col-sm-12">
                         <div class="card mb-3 mt-3 project" style="height: fit-content;">
-                                <a href="{% url 'project' project.id %}">
-                                <h3 class="card-header sign">{{project.title}}</h3>
-                                <img style="height: 200px; width: 100%; display: block;" src="{{project.project_pic.url}}" alt="Card image">
+                                <a href="{% url 'post' post.id %}">
+                                <h3 class="card-header sign">{{post.title}}</h3>
+                               
                                 <div class="card-body">
-                                  <p class="card-text sign">{{project.description}}</p>
-                                  <p class="card-text text-muted sign">by {{project.author}}</p>
+                                  <p class="card-text sign">{{post.post}}</p>
+                                  <p class="card-text text-muted sign">by {{post.user}}</p>
                                 </div>
                                 <div class="card-footer text-muted sign">
-                                    {{project.date_posted}}
+                                    {{post.date_posted}}
                                 </div>
                               </div>
                 </div>
