@@ -5,19 +5,34 @@
 {% block content %}
     <div class="container">
         <div class="row">
+            Posts
                     {% for post in posts %}
-                <div class="col-md-3 col-lg-3 col-sm-12">
+                <div class="col-md-4 col-lg-4 col-sm-12">
                         <div class="card mb-3 mt-3 project" style="height: fit-content;">
                                 <a href="{% url 'post' post.id %}">
                                 <h3 class="card-header sign">{{post.title}}</h3>
-                               
                                 <div class="card-body">
-                                  <p class="card-text sign">{{post.post}}</p>
+                                        <img style="height: 200px; width: 100%; display: block;" src="{{post.post_pic.url}}" alt="Card image">
+                                  <p class="card-text sign">{{post.post |truncatechars:50 }}</p>
                                   <p class="card-text text-muted sign">by {{post.user}}</p>
                                 </div>
                                 <div class="card-footer text-muted sign">
                                     {{post.date_posted}}
                                 </div>
+                              </div>
+                </div>
+                {% endfor %}
+
+                {% for business in businesses %}
+                <div class="col-md-4 col-lg-4 col-sm-12">
+                        <div class="card mb-3 mt-3 project" style="height: fit-content;">
+                                <a href="{% url 'business' business.id %}">
+                                <h3 class="card-header sign">{{business.owner}}</h3>
+                                <div class="card-body">
+                                  <p class="card-text sign"> owned by :{{business.name}}</p>
+                                  <p class="card-text text-muted sign">by {{business.email}}</p>
+                                </div>
+                               
                               </div>
                 </div>
                 {% endfor %}

@@ -45,7 +45,6 @@ class Business(models.Model):
     name =models.CharField(max_length=144)
     email = models.EmailField(max_length=144)
     neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, default=1)
-    email = models.EmailField(max_length=100)
 
     def create_business(self):
         self.save()
@@ -83,7 +82,7 @@ class Profile(models.Model):
     
     def __str__(self):
         return self.name
-        
+
 @receiver(post_save,sender=User)
 def create_profile(sender, instance,created,**kwargs):
     if created:
@@ -101,6 +100,7 @@ class Post(models.Model):
     date_posted = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     neigbourhood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
+    post_pic = models.ImageField(upload_to="post_pics/", blank=True)
     
     
     def create_post(self):

@@ -36,5 +36,12 @@ def post(request, id):
    
     return render(request, 'all-posts/s_post.html', {'post': post})
 
+def business(request, id):
+    if request.user.is_authenticated:
+        user = User.objects.get(username = request.user)
+        business = Business.objects.get(id = id)
+   
+    return render(request, 'all-posts/s_business.html', {'business': business})
+
 
    
