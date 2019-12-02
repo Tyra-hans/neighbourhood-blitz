@@ -45,6 +45,7 @@ class Business(models.Model):
     name = models.CharField(max_length=144)
     email = models.EmailField(max_length=144)
     neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, default=1)
+    profile_pic = models.ImageField(upload_to='images/', default='media/images/default.jpeg')
 
     def create_business(self):
         self.save()
