@@ -12,14 +12,14 @@ class Neighbourhood(models.Model):
     admin = models.ForeignKey(User,on_delete=models.CASCADE, blank=True , null=True)
 
 
-    def create_neigbourhood(self):
+    def create_neighbourhood(self):
         self.save()
         
-    def delete_neigbourhood(self):
+    def delete_neighbourhood(self):
         self.delete()
         
     @classmethod
-    def find_neigbourhood(cls,id):
+    def find_neighbourhood(cls,id):
         search = cls.objects.get(id = id)
         return  search
     
