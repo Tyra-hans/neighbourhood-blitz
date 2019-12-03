@@ -86,8 +86,8 @@ def create_business(request):
 
 
 @login_required(login_url='/accounts/login/?next=/')   
-def single_neigborhood(request,id):
-    single_hood = Neigbourhood.objects.get(pk=id)
-    business = single_hood.business_set.all
-    post = single_hood.post_set.all
-    return render (request, 'all_posts/home.html',{'hood':single_hood,'business':business,'post':post})
+def single_neigbourhood(request,id):
+    single_neighbourhood = Neighbourhood.objects.get(pk=id)
+    business = single_neighbourhood.business_set.all
+    post = single_neighbourhood.post_set.all
+    return render (request, 'all_posts/post.html',{'neighbourhood':single_neighbourhood,'business':business,'post':post})

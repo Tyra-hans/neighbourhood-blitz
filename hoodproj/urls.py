@@ -18,12 +18,13 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.contrib.auth import views
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'' , include('hoodapp.urls')),
     # url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^logout/$', views.logout, {"next_page": '/'}),
-    url(r'^single_hood/(\d+)/$', views.single_neigbourhood,name='single'),
+    
     
 ]
