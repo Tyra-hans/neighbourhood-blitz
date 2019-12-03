@@ -16,9 +16,7 @@
                                   <p class="card-text text-muted sign">police: {{neighbourhood.police_contacts}}</p>
                                   <p class="card-text text-muted sign">ambulance: {{neighbourhood.health_contacts}}</p>
                                 </div>
-                                <div class="card-footer text-muted sign">
-                                    {{neighbour.date_posted}}
-                                </div>
+                                <a href="{% url 'single' one.id %}" class="btn btn-outline-warning btn-lg">join</a>
                               </div>
                 </div>
                 {% endfor %}
