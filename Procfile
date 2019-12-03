@@ -1,1 +1,1 @@
-web: gunicorn hoodproj.wsgi
+web: gunicorn hoodproj.wsgi --log-file-
