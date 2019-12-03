@@ -9,6 +9,8 @@ class Neighbourhood(models.Model):
     occupants_count = models.PositiveIntegerField(default=0)
     police_contacts =models.PositiveIntegerField(default=0)
     health_contacts =models.PositiveIntegerField( default=0)
+    admin = models.ForeignKey(User,on_delete=models.CASCADE, blank=True , null=True)
+
 
     def create_neigborhood(self):
         self.save()
