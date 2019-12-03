@@ -83,3 +83,11 @@ def create_business(request):
         form = UploadBusinessForm()
 
     return render(request, 'all-posts/create_business.html', {'form': form})
+
+
+@login_required(login_url='/accounts/login/?next=/')   
+def single_neigborhood(request,id):
+    single_hood = Neigbourhood.objects.get(pk=id)
+    business = single_hood.business_set.all
+    post = single_hood.post_set.all
+    return render (request, 'all_posts/home.html',{'hood':single_hood,'business':business,'post':post})
