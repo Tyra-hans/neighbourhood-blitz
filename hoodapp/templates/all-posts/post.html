@@ -1,18 +1,16 @@
-{% extends 'all_posts/base.html'%}
+{% extends 'all-posts/base.html'%}
 
 {% block content %}
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-12 col-md-2">
-            <h6 class="text-center">{{neighbourhood.name}}</h6>
+        <div class="col-sm-12 col-md-4">
+            <h3 class="text-center neighbourhoodtitle">neighbourhood: {{neighbourhood.name}}</h3>
             <img src="{{neighbourhood.pic.url}}" alt="" class="img-rounded-circle"
                 style="border-radius: 50%; width:100px; height:100px; border-color: brown; border-width: 1px;">
-
-                <a href="{%url 'profile' %}" class="btn btn-outline-info btn-sm mt-1"></a>
         </div>
-        <div class="col-sm-12 col-md-7 jumbotron">
-            <h4 class="text-center">Businesses Available</h4>
+        <div class="col-sm-12 col-md-4 ">
+            <h2 class="text-center subtitle">Businesses</h2>
             <ul class="list-group">
                 {% for business in businesses %}
 
@@ -24,39 +22,37 @@
                 {% endfor %}
             </ul>
         </div>
-        <div class="col-sm-12 col-md-3">
-            <small>Health Contact:{{neighbourhood.health_contacts}}</small>
-            <small>
-                <p>Police Contact : {{neighbourhood.police_contacts}}</p>
-            </small>
+        <div class="col-sm-12 col-md-4 neighbourhoodtitle">
+            <h4>ambulance :{{neighbourhood.health_contacts}}</h4>
+            <h4>
+                <p>police : {{neighbourhood.police_contacts}}</p>
+            </h4>
 
-            <a href="{%url 'newpost' neighbourhood.id%}" class="btn btn-outline-info btn-sm">Post</a>
 
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12 col-md-2"></div>
+      
         <div class="col-sm-12 col-md-7">
             <h3>neighbourhood Posts</h3>
-            {% if posts %}
-            {% for post in posts %}
-            <div class="card">
-                <div class="card-header">
-                   <b><h4 class="card-title">{{post.title}}</h4></b>
+            
+            {% for post in post %}
+            <div class="panel">
+                <div class="panel-header">
+                   <b><h4>{{post.title}}</h4></b>
                     <small><p>posted by: {{post.user.username}}</p></small>
                 </div>
-                <div class="card body">
+                <div>
                     <p>{{post.post | truncatechars:'100'}}</p>
                 </div>
-                <div class="card-footer">
-                    <blockquote class="blockquote-footer"> {{post.date_posted}}</blockquote>
+                <hr>
+                <div>
+                
+                    <div class="text-muted"> {{post.date_posted}}</div>
                     
                 </div>
             </div>
             {% endfor %}
-            {% else %}
-            <p class="text-center card ">No Posts from this neigbourhood.</p>
-            {% endif %}
         </div>
         <div class="col-sm-12 col-md-3"></div>
     </div>

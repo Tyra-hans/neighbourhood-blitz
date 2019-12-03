@@ -30,12 +30,12 @@ def update_profile(request):
     my_prof = Profile.objects.get(user=request.user)
     form = UpdateProfileForm(instance=request.user)
 
-def post(request, id):
-    if request.user.is_authenticated:
-        user = User.objects.get(username = request.user)
-        post = Post.objects.get(id = id)
+# def post(request, id):
+#     if request.user.is_authenticated:
+#         user = User.objects.get(username = request.user)
+#         post = Post.objects.get(id = id)
    
-    return render(request, 'all-posts/s_post.html', {'post': post})
+#     return render(request, 'all-posts/post.html', {'post': post})
 
 def business(request, id):
     if request.user.is_authenticated:
@@ -86,8 +86,8 @@ def create_business(request):
 
 
 @login_required(login_url='/accounts/login/?next=/')   
-def single_neigbourhood(request,id):
+def single_neighbourhood(request,id):
     single_neighbourhood = Neighbourhood.objects.get(pk=id)
     business = single_neighbourhood.business_set.all
     post = single_neighbourhood.post_set.all
-    return render (request, 'all_posts/post.html',{'neighbourhood':single_neighbourhood,'business':business,'post':post})
+    return render (request, 'all-posts/post.html',{'neighbourhood':single_neighbourhood,'business':business,'post':post})

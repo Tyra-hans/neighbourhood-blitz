@@ -12,19 +12,19 @@ class Neighbourhood(models.Model):
     admin = models.ForeignKey(User,on_delete=models.CASCADE, blank=True , null=True)
 
 
-    def create_neigborhood(self):
+    def create_neigbourhood(self):
         self.save()
         
-    def delete_neigborhood(self):
+    def delete_neigbourhood(self):
         self.delete()
         
     @classmethod
-    def find_neigborhood(cls,id):
+    def find_neigbourhood(cls,id):
         search = cls.objects.get(id = id)
         return  search
     
     @classmethod   
-    def update_neigborhood(cls,id,new_name):
+    def update_neigbourhood(cls,id,new_name):
         cls.objects.filter(pk = id).update(name=new_name)
         new_name_object = cls.objects.get(name = new_name)
         new_name = new_name_object.name

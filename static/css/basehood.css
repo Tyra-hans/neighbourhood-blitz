@@ -20,3 +20,13 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+.subtitle{
+    font-family: cursive;
+    padding-top: 50px;
+    font-size: 50px;
+}
+.neighbourhoodtitle{
+    font-family: fantasy;
+    padding-top: 200px;
+    font-size: 30px;
+}
